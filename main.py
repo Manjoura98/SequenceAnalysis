@@ -1,96 +1,74 @@
+#from numpy import array
+#from numpy import argmax
+#from keras.utils
+import time
 
-from Bio.Seq import Seq
-from Bio.SeqUtils import GC
-from Bio.Data import CodonTable
-from Bio import SeqFeature
-from Bio import SeqIO
-
-#fich = "/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq"
-#startlist = []
-#with open("/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq") as s:
-    #for i in SeqIO.parse(s, "fastq"):
-        #startlist.append(str(i.seq))
-
-
-#file = open("/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq")
-#sequences = file.readlines()
-#file.close()
-#i = 2
-#for i in len(sequences):
-    #p = sequences[i]
-    #print(p)
-    #i += 3
-
+#ChronoStart
+start = time.time()
+#A = [1, 0, 0, 0]
+#T = [0, 1, 0, 0]
+#G = [0, 0, 1, 0]
+#c = [0, 0, 0, 1]
+#OuvertureDuFichier
 with open("/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq") as file:
+    #DéclarationDuDictio
+    newdict = {}
+    specialChar = "\\n"
+    #InitialisationDeLaPremièreLigneAtraiter
     nLine = 1
+    #LaLongeurDuKmer
+    hope = input("what is the size of the k desired:")
+    hope = int(hope)
+    #IterationSurLesLignesDuFichierPourTraiterLesLignesDesSéquences
     for i, line in enumerate(file):
+        #ÇavaCommencerÀLaLigneAvecIndex=1 ---> nLine
         if i == nLine:
-            print(line)
-            longueur = len(line)
-            print(longueur)
+            #CalculDuNombreDesKmers
+            numbKmers = len(line) - hope + 1
+            if specialChar in line:
+                line.strip()
+            print("La longueur de la séquence est de:", len(line), "Nucléotides")
+            print("La séquence est la suivante:", line)
+            print("Le nombre des kmers:", numbKmers)
+
+
+            #PourLe S commençant de la position 0 et avec un hope de longeur k, jusquau dernier kmer, Split to Kmers of HopeLength,PisIncrémenter s
+            for s in range(0, len(line)-hope):
+                sub = line[s:s+hope]
+            if sub in newdict:
+                newdict[sub] += 1
+        #Sinon ajouter la première Ocurrence
+            else:
+                newdict[sub] = 1
+
+        #Passer à la prochaine ligne de séquence
             nLine = nLine + 4
-
-    
-
-
-
-
-#while p in len(sequences):
-    #print(p)
-    #p += 4
-
-
-
-#print(startlist)
-
-#print (len(startlist[0]))
-
-#my_seq = "ATGCATGCAAGGAAAAAATTTTGCGGGGGCTATATATATATATATAGG";
-
-#print(GC(my_seq))
-
-#seqq = ["AAATTTGG","AAAAAAGTCGTTTA"]
-
-#p = ""
-
-#for i in seqq:
-    #p += i;
-
-#print(p)
-
-#space = "N"*10
-
-#print (space.join(seqq))
-
-#dna = Seq("ATGTAGCGCATTAGCGCG")
-#mrna = dna.transcribe()
-#protein = mrna.translate()
-
-#print(mrna)
-#print(protein)
-
-#standard_table = CodonTable.unambiguous_dna_by_name["Standard"]
-
-#print (standard_table)
-
-#print (standard_table.stop_codons)
-
-
-
-#var0 = len(my_seq);
-#var1= my_seq.count("G");
-
-#var2= my_seq.count("C");
-
-#freq = (var1 + var2)/2;
-
-#print (freq)
-
-#for index,letter in enumerate(my_seq):
-    #print ("%i = %s" %(index,letter))
+        #Le dictionnaire avec le nombre d'occurences
+    print(newdict)
+    #ChronoEnd
+    end = time.time()
+    #Calcul de la durée du Processus
+    processTiming = end - start
+    print("Le temps du processus:", processTiming, "secondes,en minutes:", processTiming/60)
+    hotEnc = list(newdict.items())
 
 
 
 
-#for index,letter in enumerate(my_seq,5):
-    #print ("%i = %s" %(index,letter))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
