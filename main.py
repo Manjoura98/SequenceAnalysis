@@ -5,10 +5,7 @@ import time
 
 #ChronoStart
 start = time.time()
-#A = [1, 0, 0, 0]
-#T = [0, 1, 0, 0]
-#G = [0, 0, 1, 0]
-#c = [0, 0, 0, 1]
+
 #OuvertureDuFichier
 with open("/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq") as file:
     #DéclarationDuDictio
@@ -50,7 +47,7 @@ with open("/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq") as file:
     #Calcul de la durée du Processus
     processTiming = end - start
     print("Le temps du processus:", processTiming, "secondes,en minutes:", processTiming/60)
-    hotEnc = list(newdict.items())
+    
 
 
 
