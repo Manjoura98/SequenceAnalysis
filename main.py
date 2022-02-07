@@ -10,7 +10,6 @@ start = time.time()
 with open("/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq") as file:
     #DéclarationDuDictio
     newdict = {}
-    specialChar = "\\n"
     #InitialisationDeLaPremièreLigneAtraiter
     nLine = 1
     #LaLongeurDuKmer
@@ -22,8 +21,6 @@ with open("/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq") as file:
         if i == nLine:
             #CalculDuNombreDesKmers
             numbKmers = len(line) - hope + 1
-            if specialChar in line:
-                line.strip()
             print("La longueur de la séquence est de:", len(line), "Nucléotides")
             print("La séquence est la suivante:", line)
             print("Le nombre des kmers:", numbKmers)
