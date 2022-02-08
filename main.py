@@ -1,8 +1,7 @@
-#from numpy import array
-#from numpy import argmax
-#from keras.utils
+from pympler import tracker
 import time
 
+mem = tracker.SummaryTracker()
 #ChronoStart
 start = time.time()
 
@@ -44,8 +43,7 @@ with open("/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq") as file:
     #Calcul de la durée du Processus
     processTiming = end - start
     print("Le temps du processus:", processTiming, "secondes,en minutes:", processTiming/60)
-    
-
+    mem.print_diff()
 
 
 
