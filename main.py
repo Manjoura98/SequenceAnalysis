@@ -36,12 +36,14 @@ with open("/home/mehdim/Desktop/BioPython/chry5_S14_L001_R1_001.fastq") as file:
 
         #Passer à la prochaine ligne de séquence
             nLine = nLine + 4
-        #Le dictionnaire avec le nombre d'occurences
-    print(newdict)
-    #ChronoEnd
+        
+        #ChronoEnd
     end = time.time()
     #Calcul de la durée du Processus
     processTiming = end - start
+    #Le dictionnaire avec le nombre d'occurences
+    print(newdict)
+
     print("Le temps du processus:", processTiming, "secondes,en minutes:", processTiming/60)
     mem.print_diff()
 
