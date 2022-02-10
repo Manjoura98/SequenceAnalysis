@@ -1,5 +1,6 @@
 import time
 from pympler import tracker
+import contextlib
 
 fname = input("What file do you want to work with:")
 hope = input("What is your k:")
@@ -45,10 +46,17 @@ with open(fname, "r") as file:
 end = time.time()
 # Calcul de la durée du Processus
 processTiming = end - start
-print(newdict)
-print("Le temps du processus:", processTiming, "secondes,en minutes:", processTiming / 60)
-mem.print_diff()
+saver = input("What is the name of file you want to save the results in:")
+with open(saver,"w+") as rfile:
+    with contextlib.redirect_stdout(rfile):
+        print(newdict)
+        print("Le temps du processus:", processTiming, "secondes,en minutes:", processTiming / 60)
+        mem.print_diff()
+        rfile.close()
 
 
 #Author Mehdi Manjoura AKA MM98
 #Feb 8, 2022
+
+
+
