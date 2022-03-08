@@ -66,6 +66,8 @@ print(len(logNocc))
 print(len(logNkmers))
 
 plt.scatter(logNkmers,logNocc)
+plt.xlabel("Nombre es kmers")
+plt.ylabel("Nombre des occurrences")
 plt.show()
 # ChronoEnd
 end = time.time()
