@@ -48,7 +48,7 @@ for j in range(len(a)):
 sca.xlabel("f(n)--Nombre d'occurrences")
 sca.ylabel("n--Nombre de kmers")
 
-sca.hist(a,b)
+sca.scatter(a,b)
 sca.show()
 
 # ChronoEnd
