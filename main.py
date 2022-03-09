@@ -1,9 +1,12 @@
+import math
 import time
 from math import log10
 from collections import Counter
 from pympler import tracker
 import contextlib
 import matplotlib.pyplot as sca
+import pandas as pd
+import numpy as np
 fname = input("What file do you want to work with:")
 hope = int(input("What is your k:"))
 mem = tracker.SummaryTracker()
@@ -36,19 +39,16 @@ with open(fname, "r") as file:
                 # Passer à la prochaine ligne de séquence
             nLine = nLine + 4
 occ = Counter(newdict.values())
-a = []
-b = []
-for i in occ:
-    a.append(log10(i))
-    b.append(log10(occ[i]))
-for j in range(len(a)):
-    if a[i] == 0:
-        a.remove(a[i])
-        b.remove(b[i])
-sca.xlabel("f(n)--Nombre d'occurrences")
-sca.ylabel("n--Nombre de kmers")
+keys = np.array(list(occ.keys()))
+values = np.array(list(occ.values()))
 
-sca.scatter(a,b)
+outkeys = np.log10(keys)
+outvalues = np.log10(values)
+
+sca.xlabel("n--Nombre d'occurrences")
+sca.ylabel("fn--Nombre de kmers")
+sca.title("Représentation du Spectrum")
+sca.scatter(outkeys,outvalues)
 sca.show()
 
 # ChronoEnd
@@ -61,15 +61,12 @@ with open(saver, "w+") as rfile:
         print(newdict)
 
         print("Le temps du processus:", processTiming, "secondes,en minutes:", processTiming / 60)
-        print("Nombre d'occurrences-f(n)-- après application du log:","Nombres de kmers(n)-- après application du log:")
-        print("*"*40)
-        for i in range(len(a)):
-            rfile.write(str(a[i])+ " "*10 + str(b[i]) + "\n")
-        print("La représentation graphique pour le kmer égal à:", hope, "est:")
-        sca.savefig('figureKmer.png')
         mem.print_diff()
         rfile.close()
 
+
+
 # Author Mehdi Manjoura AKA MM98
-# March 7, 2022
+# March 9, 2022
+
 
