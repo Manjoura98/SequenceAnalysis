@@ -10,6 +10,12 @@ To use the python file:
   7-input the name of the file text you want to save your results in,if there is no one in the directory, one will be created! -- if you write text.txt, a file text.txtn will be created!
   
   
+  8-To plot the local maximum in a naive way, for k = 12 :
+  sca.annotate("Couverture: maximum local de la fonction", xytext = (1.73,4.70), xy=(2,6), arrowprops = {'facecolor':'black'})
+  
+  
+  
+  
   
   #Author: Mehdi Manjoura
-  #Feb 9th,2022
+  #March 9th,2022
