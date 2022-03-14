@@ -54,7 +54,7 @@ def seq():
     sca.xlabel("n--Nombre de kmers")
     sca.ylabel("fn--Nombre d'occurrences")
     sca.title("Représentation du Spectrum")
-    sca.annotate("Couverture: maximum local de la fonction", xytext = (1.73,4.70), xy=(2,6), arrowprops = {'facecolor':'black'})
+    #sca.annotate("Couverture: maximum local de la fonction", xytext = (1.73,4.70), xy=(2,6), arrowprops = {'facecolor':'black'})
     sca.scatter(outkeys,outvalues)
     sca.show()
     lenFasta = 0
